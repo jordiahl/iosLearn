@@ -11,6 +11,17 @@ var stringvalue="\(jordi)"
 
 print(str+stringvalue)
 
+var arr = [integer_t]()
+
+arr.append(5);
+arr.append(6);
+
+for i in 0 ..< arr.count{
+    print(arr[i])
+}
+
+
+
 
 
 
