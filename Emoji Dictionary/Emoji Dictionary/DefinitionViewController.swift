@@ -32,7 +32,7 @@ class DefinitionViewController: UIViewController {
     
     func sendEmoji(sentEmoji:String ){
         self.sentEmoji = sentEmoji;
-        print(emoji);
+//        print(emoji);
     }
     
     
