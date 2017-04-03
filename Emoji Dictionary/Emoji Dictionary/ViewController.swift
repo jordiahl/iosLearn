@@ -12,6 +12,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var daCoolTableView: UITableView!
     
+    var emojis = ["😂", "😡", "😱", "😎", "😤", "this is at index 5", "this is at index 6", "this is at index 7", "this is at index 8"];
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,16 +30,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return emojis.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell();
-        cell.textLabel?.text = "😂 😂 😂 😂 😂 😂 😂 😂 😂 😂😂 😂 😂 😂 😂 ";
+        
+        print(indexPath.row);
+        
+        cell.textLabel?.text = emojis[indexPath.row]
         return cell;
     }
     
-
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let emoji:String = emojis[indexPath.row];
+        performSegueWithIdentifier("moveSegue", sender: emoji);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let defVC = segue.destinationViewController as! DefinitionViewController
+        defVC.sendEmoji(sender as! String)
+        print(sender)
+        
+    }
+    
     
 
 }

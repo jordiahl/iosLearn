@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HSD-1k-K3h">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Dictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Dictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-e7-xPA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-e7-xPA">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -30,11 +30,77 @@
                             <constraint firstItem="H1o-e7-xPA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fiX-9b-LcW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Us3-JD-PIL"/>
                     <connections>
                         <outlet property="daCoolTableView" destination="H1o-e7-xPA" id="EPC-21-v0v"/>
+                        <segue destination="gtv-hw-et8" kind="show" identifier="moveSegue" id="OBh-M8-hAS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="446"/>
+        </scene>
+        <!--Definition View Controller-->
+        <scene sceneID="RmM-yf-xnw">
+            <objects>
+                <viewController id="gtv-hw-et8" customClass="DefinitionViewController" customModule="Emoji_Dictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n1c-98-mzs"/>
+                        <viewControllerLayoutGuide type="bottom" id="EXg-XU-hvB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ah8-Rf-O7o">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Suglasses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeG-RK-uWx">
+                                <rect key="frame" x="261" y="439" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="😎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-ga-6Nh">
+                                <rect key="frame" x="194" y="180" width="213" height="210"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="198"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JgX-ga-6Nh" firstAttribute="centerY" secondItem="ah8-Rf-O7o" secondAttribute="centerY" constant="-16" id="0ab-SL-CQL"/>
+                            <constraint firstItem="eeG-RK-uWx" firstAttribute="centerX" secondItem="JgX-ga-6Nh" secondAttribute="centerX" id="KCe-Mu-Mxu"/>
+                            <constraint firstItem="JgX-ga-6Nh" firstAttribute="centerX" secondItem="ah8-Rf-O7o" secondAttribute="centerX" id="MOh-Qu-wwa"/>
+                            <constraint firstItem="eeG-RK-uWx" firstAttribute="top" secondItem="JgX-ga-6Nh" secondAttribute="bottom" constant="50" id="gkw-lU-dYE"/>
+                            <constraint firstItem="JgX-ga-6Nh" firstAttribute="centerX" secondItem="ah8-Rf-O7o" secondAttribute="centerX" id="m3g-7W-xm5"/>
+                            <constraint firstItem="JgX-ga-6Nh" firstAttribute="top" secondItem="n1c-98-mzs" secondAttribute="bottom" constant="159" id="m4m-KJ-co5"/>
+                            <constraint firstItem="JgX-ga-6Nh" firstAttribute="centerX" secondItem="ah8-Rf-O7o" secondAttribute="centerX" id="uhN-z4-0Ce"/>
+                            <constraint firstItem="JgX-ga-6Nh" firstAttribute="centerY" secondItem="ah8-Rf-O7o" secondAttribute="centerY" constant="-16" id="zVZ-kC-HJ9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emoji" destination="JgX-ga-6Nh" id="dcl-1O-7KO"/>
+                        <outlet property="emojiDescription" destination="eeG-RK-uWx" id="PUF-hG-D5f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="abi-d3-jVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1827" y="446"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5pI-3D-2fH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HSD-1k-K3h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xr9-8v-7g2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0qR-eW-MW6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NbD-ae-x5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="287" y="446"/>
         </scene>
