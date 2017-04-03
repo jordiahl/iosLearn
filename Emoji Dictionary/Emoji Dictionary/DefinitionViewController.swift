@@ -12,20 +12,22 @@ class DefinitionViewController: UIViewController {
 
     
     var sentEmoji = "No emoji";
+    var emojisDescriptions = [String:String]();
     
     @IBOutlet weak var emoji: UILabel!
     @IBOutlet weak var emojiDescription: UILabel!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        setDescriptions();
         
         emoji.text = sentEmoji;
-
-        // Do any additional setup after loading the view.
+        
+        addDescription(sentEmoji);
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        super.didReceiveMemoryWarning();
         // Dispose of any resources that can be recreated.
     }
     
@@ -35,9 +37,32 @@ class DefinitionViewController: UIViewController {
 //        print(emoji);
     }
     
+    func setDescriptions() {
+        emojisDescriptions["😂"] = "dude laughing";
+        emojisDescriptions["😡"] = "dude mad";
+        emojisDescriptions["😱"] = "dude in awe";
+        emojisDescriptions["😎"] = "suglasses dude";
+        emojisDescriptions["😤"] = "dude huffing";
+        emojisDescriptions["this is at index 5"] = "this is at index 5";
+        emojisDescriptions["this is at index 6"] = "this is at index 6";
+        emojisDescriptions["this is at index 7"] = "this is at index 7";
+    }
     
+    func addDescription(emoji:String) {
+        if isInDictionary(emoji) {
+            emojiDescription.text = emojisDescriptions[emoji];
+        }
+        else{
+            emojiDescription.text = "couldnt find the value";
+        }
+    }
     
-
+    func isInDictionary(emoji:String) -> Bool {
+        return emojisDescriptions[emoji] != nil;
+    }
+    
+//, , ,, , , , , "this is at index 8"
+    
     /*
     // MARK: - Navigation
 
