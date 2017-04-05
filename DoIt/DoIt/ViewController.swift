@@ -52,6 +52,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return [task1,task2, task3]
     }
     
-
+    
+    @IBAction func addClick(_ sender: Any) {
+        print("it fucking works")
+        performSegue(withIdentifier: "addSegue", sender: nil)
+    }
+    
 }
 
