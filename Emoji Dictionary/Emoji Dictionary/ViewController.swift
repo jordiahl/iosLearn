@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var daCoolTableView: UITableView!
     
-    var emojis = ["😂", "😡", "😱", "😎", "😤", "this is at index 5", "this is at index 6", "this is at index 7", "this is at index 8"];
+    var emojis = ["😂", "😉", "😡", "😱", "😎", "😤", "this is at index 5", "this is at index 6", "this is at index 7", "this is at index 8"];
     
     
     override func viewDidLoad() {
@@ -29,11 +29,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return emojis.count;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell();
         
         print(indexPath.row);
@@ -42,13 +42,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell;
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let emoji:String = emojis[indexPath.row];
-        performSegueWithIdentifier("moveSegue", sender: emoji);
+        performSegue(withIdentifier: "moveSegue", sender: emoji);
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let defVC = segue.destinationViewController as! DefinitionViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let defVC = segue.destination as! DefinitionViewController
         defVC.sendEmoji(sender as! String)
         print(sender)
         

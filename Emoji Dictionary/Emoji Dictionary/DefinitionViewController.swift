@@ -32,7 +32,7 @@ class DefinitionViewController: UIViewController {
     }
     
     
-    func sendEmoji(sentEmoji:String ){
+    func sendEmoji(_ sentEmoji:String ){
         self.sentEmoji = sentEmoji;
 //        print(emoji);
     }
@@ -48,7 +48,7 @@ class DefinitionViewController: UIViewController {
         emojisDescriptions["this is at index 7"] = "this is at index 7";
     }
     
-    func addDescription(emoji:String) {
+    func addDescription(_ emoji:String) {
         if isInDictionary(emoji) {
             emojiDescription.text = emojisDescriptions[emoji];
         }
@@ -57,7 +57,7 @@ class DefinitionViewController: UIViewController {
         }
     }
     
-    func isInDictionary(emoji:String) -> Bool {
+    func isInDictionary(_ emoji:String) -> Bool {
         return emojisDescriptions[emoji] != nil;
     }
     
