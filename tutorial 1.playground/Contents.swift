@@ -5,7 +5,7 @@ import UIKit
 var str:String = "Hello, playground";
 var jordi:Int=5;
 
-str.appendContentsOf((String(jordi)))
+str.append((String(jordi)))
 
 var stringvalue="\(jordi)"
 
@@ -21,6 +21,39 @@ for i in 0 ..< arr.count{
 }
 
 
+
+// optional
+var age : Int? = 27
+
+age
+
+print(age)
+print(age!)
+
+
+
+
+// made to pass nil
+func stringToInt(someString : String ) -> Int?{
+    return nil
+}
+
+func checkAgeValidity(age:Int?){
+    if age == nil  {
+        print("age is null")
+    }
+    else {
+        print("age is equal to \(age!)")
+    }
+}
+
+stringToInt(someString: "asdlkgjals")
+
+checkAgeValidity(age: age)
+
+age = nil
+
+checkAgeValidity(age: age)
 
 
 
