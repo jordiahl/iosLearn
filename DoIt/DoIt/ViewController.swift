@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var tasks: [Task] = []
@@ -17,14 +17,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
+        
         tasks = makeTasks();
         
         tableView.dataSource=self;
         tableView.delegate=self;
         
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -35,6 +35,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = task.getName()
         return cell;
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = tasks[indexPath.row]
+        performSegue(withIdentifier: "selectTask", sender: task)
+        
+    }
+    
     
     func makeTasks() -> [Task]{
         
@@ -53,13 +61,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextVc = segue.destination as! CreateTaskViewController
-        nextVc.previousVC = self
+        parseSegue(segue: segue, sender: sender)
+        
+    }
+    
+    func parseSegue(segue:UIStoryboardSegue, sender:Any?) {
+        
+        if segue.identifier == CreateTaskViewController.identifier {
+            let nextVc:CreateTaskViewController = segue.destination as! CreateTaskViewController
+            prepareForCreateSegue(controller:nextVc)
+        }
+        else{
+            let nextVc:SelectTaskViewController = segue.destination as! SelectTaskViewController
+            let task:Task = sender as! Task
+            prepareForSelectSegue(controller:nextVc, sender: task)
+        }
+    }
+    
+    
+    private func prepareForCreateSegue(controller:CreateTaskViewController) {
+        controller.previousVC = self
+    }
+    
+    private func prepareForSelectSegue(controller:SelectTaskViewController, sender:Task) {
+        controller.setCurrentTask(task: sender)
+        controller.setPreviousVC(vc: self)
     }
     
     func addTask(task:Task) {
         tasks.append(task)
+        reloadView()
+    }
+    
+    public func reloadView() {
         self.tableView.reloadData()
     }
+    
+    /**
+     will reload the view every time that the view is called
+    */
+    override func viewWillAppear(_ animated: Bool) {
+        reloadView()
+    }
+    
+    public func completeTask(task:Task) {
+    
+        for index in 0...tasks.count {
+            if tasks[index] === task {
+                tasks.remove(at: index)
+                return
+            }
+        }
+    }
+    
 }
 

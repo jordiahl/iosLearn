@@ -15,6 +15,7 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var importantSwitch: UISwitch!
     
     var previousVC = ViewController()
+    static var identifier = "addSegue";
     
     
     override func viewDidLoad() {
@@ -27,7 +28,7 @@ class CreateTaskViewController: UIViewController {
         print("add was clicked")
         createTask(name: taskNameTextField.text!, important: importantSwitch.isOn)
         //for going back to the previous viewController
-        returnToPreviousController() 
+        returnToPreviousController()
     }
 
     

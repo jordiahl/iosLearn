@@ -46,6 +46,7 @@
                     <connections>
                         <outlet property="tableView" destination="lf3-lr-VDB" id="5Lf-Bv-nhe"/>
                         <segue destination="wtQ-n8-AXV" kind="show" identifier="addSegue" id="srl-67-xQ5"/>
+                        <segue destination="MWo-9d-Yp0" kind="show" identifier="selectTask" id="b5D-Fq-G1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,6 +121,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnf-kk-Ov7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1836" y="-551"/>
+        </scene>
+        <!--Select Task View Controller-->
+        <scene sceneID="7q3-A6-abm">
+            <objects>
+                <viewController id="MWo-9d-Yp0" customClass="SelectTaskViewController" customModule="DoIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ufd-uq-oeT"/>
+                        <viewControllerLayoutGuide type="bottom" id="b0Y-qj-kg3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Os3-HZ-sl6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hin-88-eya">
+                                <rect key="frame" x="165" y="160" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KzV-Bg-brB">
+                                <rect key="frame" x="183" y="232" width="51" height="31"/>
+                                <connections>
+                                    <action selector="taskImportanceToggle:" destination="MWo-9d-Yp0" eventType="valueChanged" id="ePj-gO-auK"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXK-0E-FVZ">
+                                <rect key="frame" x="179" y="337" width="67" height="30"/>
+                                <state key="normal" title="Complete"/>
+                                <connections>
+                                    <action selector="completeActionClick:" destination="MWo-9d-Yp0" eventType="touchUpInside" id="Xyz-FG-Zsc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sXK-0E-FVZ" firstAttribute="leading" secondItem="Os3-HZ-sl6" secondAttribute="leading" constant="179" id="KfL-6a-G9j"/>
+                            <constraint firstItem="KzV-Bg-brB" firstAttribute="centerX" secondItem="Os3-HZ-sl6" secondAttribute="centerX" id="LOI-uW-mSf"/>
+                            <constraint firstItem="hin-88-eya" firstAttribute="top" secondItem="Ufd-uq-oeT" secondAttribute="bottom" constant="96" id="aHa-6L-XeB"/>
+                            <constraint firstItem="KzV-Bg-brB" firstAttribute="top" secondItem="hin-88-eya" secondAttribute="bottom" constant="51" id="lbP-kx-rsN"/>
+                            <constraint firstItem="hin-88-eya" firstAttribute="centerX" secondItem="Os3-HZ-sl6" secondAttribute="centerX" id="mue-D4-3Pu"/>
+                            <constraint firstItem="sXK-0E-FVZ" firstAttribute="top" secondItem="KzV-Bg-brB" secondAttribute="bottom" constant="74" id="shD-Gb-Z7y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="taskImportance" destination="KzV-Bg-brB" id="2nU-6z-jjg"/>
+                        <outlet property="taskName" destination="hin-88-eya" id="5vW-g2-7F2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0g-Z7-1xP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1835" y="166"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jvE-BQ-yIG">
