@@ -9,8 +9,8 @@
 import Foundation
 
 class Task {
-    var name = " ";
-    var important = false;
+    var name:String = " ";
+    var important: Bool = false;
     
     
     public func getName() -> String {
@@ -18,5 +18,10 @@ class Task {
             return "❗\(name)"
         }
         return name
+    }
+    
+    init(name:String, important:Bool) {
+        self.name = name
+        self.important = important
     }
 }

@@ -37,17 +37,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func makeTasks() -> [Task]{
-        let task1 = Task()
-        task1.name = "Walk the dog"
-        task1.important = false;
         
-        let task2 = Task()
-        task2.name = "Buy Cheese"
-        task2.important = true;
+        let task1 = Task (name: "Walk the dog", important: false)
+        let task2 = Task (name: "Buy Cheese", important: true)
+        let task3 = Task (name: "Mow the lawn", important: false);
         
-        let task3 = Task()
-        task3.name = "Mow the lawn"
-        task3.important = false;
         
         return [task1,task2, task3]
     }
@@ -58,5 +52,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         performSegue(withIdentifier: "addSegue", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVc = segue.destination as! CreateTaskViewController
+        nextVc.previousVC = self
+    }
+    
+    func addTask(task:Task) {
+        tasks.append(task)
+        self.tableView.reloadData()
+    }
 }
 
